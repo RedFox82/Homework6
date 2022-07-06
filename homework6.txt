@@ -1,0 +1,2 @@
+Version Control to the Rescue
+Version control exists to solve these problems, and it’s within easy reach for every developer. There are many high-quality free and open source version control systems available, but the focus of this course is on Git. Whether you work alone or with a team, transforming your workflow can do more than help you prevent the problems we just discovered. It can also improve the overall quality of your work.
