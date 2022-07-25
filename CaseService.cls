@@ -3,8 +3,8 @@ public with sharing class CaseService {
 //Get closed cases list for Insert operation
     public static Map<Id, Integer> CasesInsert(List<Case> triggerCases) {
 
-        List<Case> Closed_Cases = new List<Case>();
-        Set<String> Ids_Countries = new Set<String>();
+        List<Case> Closed_Cases = new List<Case>();   //Closed cases in trigger.new
+        Set<String> Ids_Countries = new Set<String>();    //Countries for add closes cases
 
         for (Case c : triggerCases) {
             if (c.Country__c != null && c.Status == 'Closed') {
@@ -17,12 +17,15 @@ public with sharing class CaseService {
 
 //Get closed cases list for Update operation
     public static List<Map<Id, Integer>> CasesUpdate(List<Case> triggerCases, List<Case> triggerOldCases) {
-        List<Map<Id, Integer>> updCountries = new List<Map<Id, Integer>>();
-        List<Case> Closed_Cases = new List<Case>();
-        List<Case> Reopen_Cases = new List<Case>();
 
-        Set<String> Ids_Countries = new Set<String>();
-        Set<String> Ids_decreaseCountries = new Set<String>();
+        List<Map<Id, Integer>> updCountries = new List<Map<Id, Integer>>(); //list of collections countries for update
+
+        List<Case> Closed_Cases = new List<Case>();     //Closed cases in trigger.new
+        List<Case> Closed_Cases_Old = new List<Case>();     //Closed cases in trigger.old
+        List<Case> Reopen_Cases = new List<Case>();     //Reopened cases in trigger.new
+
+        Set<String> Ids_Countries = new Set<String>();      //Countries for add closed cases
+        Set<String> Ids_decreaseCountries = new Set<String>();     //Countries for decrease reopened or with changed countries cases
 
         for (Case c : triggerCases) {
             String oldStatus = '';
@@ -44,6 +47,11 @@ public with sharing class CaseService {
             //if old value for Status "Closed" but value Country__c changed
             else if (c.Country__c != null && c.Status == 'Closed' && oldStatus == 'Closed' && oldCountry != c.Country__c) {
                 Closed_Cases.add(c);
+                for (Case old : triggerOldCases) {
+                    if (c.Id == old.Id) {
+                        Closed_Cases_Old.add(old);
+                    }
+                }
                 Ids_Countries.add(c.Country__c);
                 Ids_decreaseCountries.add(oldCountry);
             }
@@ -53,16 +61,13 @@ public with sharing class CaseService {
                 Ids_decreaseCountries.add(oldCountry);
             }
         }
-        System.debug('Ids_Countries: '+Ids_Countries);
-        System.debug('Ids_decreaseCountries: '+Ids_decreaseCountries);
         updCountries.add(get_from_Countries(Closed_Cases, Ids_Countries));
+        updCountries.add(decreaseCountries(Closed_Cases_Old, Closed_Cases, Reopen_Cases, Ids_decreaseCountries));
 
-        updCountries.add(decreaseCountries(Closed_Cases, Reopen_Cases, Ids_decreaseCountries));
-        System.debug(updCountries);
         return updCountries;
     }
 
-
+//Get map of countries with number of cases for add and change triggered records
     public static Map<Id, Integer> get_from_Countries(List<Case> Closed_Cases, Set<String> Ids_Countries) {
         Map<Id, Integer> CountriesCases = new Map<Id, Integer>();
         if (Closed_Cases.size() > 0) {
@@ -85,7 +90,8 @@ public with sharing class CaseService {
         return CountriesCases;
     }
 
-    public static Map<Id, Integer> decreaseCountries(List<Case> Closed_Cases, List<Case> Reopen_Cases, Set<String> Ids_decreaseCountries) {
+//Get map of countries with number of cases for decrease and change triggered records
+    public static Map<Id, Integer> decreaseCountries( List<Case> Closed_Cases_Old, List<Case> Closed_Cases, List<Case> Reopen_Cases, Set<String> Ids_decreaseCountries) {
         Map<Id, Integer> CountriesDec = new Map<Id, Integer>();
         List<Country__c> Countries = new List<Country__c>();
 
@@ -94,11 +100,14 @@ public with sharing class CaseService {
                          FROM Country__c
                          WHERE Id IN :Ids_decreaseCountries];
 
-            System.debug(Countries);
             for (Country__c country : Countries) {
                 Integer counter = 0;
                 for (Case cc : Closed_Cases) {
-                    if (country.Id == cc.Country__c) {
+                    Case old = new Case();
+                    for (Case c : Closed_Cases_Old) {
+                        if (c.Id == cc.Id) { old = c;}
+                    }
+                    if (country.Id == old.Country__c) {
                         counter--;
                         CountriesDec.put(country.Id, counter);
                     }
@@ -112,47 +121,42 @@ public with sharing class CaseService {
                 }
             }
         }
-        system.debug(CountriesDec);
         return CountriesDec;
-
     }
 
+//Update in after-trigger for Insert operation
     public static void UpdAfterInsert(Map<Id, Integer> Ids_Countries)     {
         if (Ids_Countries.size() > 0) {
              Set<Id> Ids = Ids_Countries.keySet();
              List<Country__c> Countries = [SELECT Id, ClosedCases__c, SuccessMessage__c
-                         FROM Country__c
-                         WHERE Id IN :Ids];
+                                           FROM Country__c
+                                           WHERE Id IN :Ids];
 
             for (Country__c country : Countries) {
                 country.ClosedCases__c = country.ClosedCases__c + Ids_Countries.get(country.Id);
             }
-            System.debug(Countries);
             update Countries;
         }
     }
 
+//Update in after-trigger for Update operation
     public static void UpdAfterUpdate(List<Map<Id, Integer>> Ids_Countries)     {
-            List<Country__c> Countries = new List<Country__c>();
+            List<Country__c> updCountries = new List<Country__c>();
 
         for (Map<Id, Integer> mp : Ids_Countries) {
             Set<Id> Ids = mp.keySet();
             if (Ids.size() != 0) {
                 System.debug(Ids);
-                Countries = [
-                        SELECT Id, ClosedCases__c, SuccessMessage__c
-                        FROM Country__c
-                        WHERE Id IN :Ids
-                ];
-                System.debug(Countries);
+                List<Country__c> Countries = [SELECT Id, ClosedCases__c, SuccessMessage__c
+                                              FROM Country__c
+                                              WHERE Id IN :Ids];
                 for (Country__c country : Countries) {
-                    System.debug(mp.get(country.Id));
                     country.ClosedCases__c = country.ClosedCases__c + mp.get(country.Id);
+                    updCountries.add(country);
                 }
             }
         }
-        System.debug(Countries);
-        update Countries;
+        update updCountries;
     }
 
 }
