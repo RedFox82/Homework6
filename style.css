@@ -1,0 +1,99 @@
+.cv-body {
+  display: flex; 
+  flex-wrap: inherit;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.cv-body > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.main {
+  display: flex; 
+  flex-direction: column;
+  background: whitesmoke;  
+  text-align: left;
+  max-width: 85%;
+  min-width: 200px;
+  
+}
+
+.info-side {
+  display: flex; 
+  flex-direction: column;
+  background: rgba(0, 46, 73, 0.658);
+  color: white;
+  text-align: left; 
+  max-width: 15%;
+  min-width: 150px; 
+}
+
+
+.main-item {
+  display: flex;
+  flex-direction: column;
+  background-color: silver;
+  margin-bottom: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 10px;
+}
+
+
+.table-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  padding: 10px;
+  
+}
+
+canvas{
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}
+
+.item {
+  text-align: left;
+  max-width: 75%;
+}
+
+#last {
+  margin-bottom: -10px;
+}
+
+.item-header {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: -7px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+table {
+  width : 100%;
+  border-top: 1px solid white;
+  padding-top: 5px;
+  
+}
+
+tr {
+  height: 50px;
+}
+
+.period {
+  min-width : 100px;
+}
+
+li {
+  list-style-type: square;
+  margin-left: -15px;
+  padding-left: 0px;
+}
