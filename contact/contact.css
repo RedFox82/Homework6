@@ -1,0 +1,27 @@
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: flex-start;
+    vertical-align: bottom;
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    margin: 10px;
+    padding: 10px;
+    gap: 20px;
+}
+
+.header {
+    font-size: large;
+    color: dodgerblue;
+}
+
+.connect {
+    color: dodgerblue;
+}
+
+.flex-item {
+    width: 30%;
+    min-width: 100px;
+}
