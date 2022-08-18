@@ -1,0 +1,26 @@
+<template>
+    <div class="container">
+        <div class="flex-item">
+            <span class="slds-avatar slds-avatar_profile-image-large">
+              <span class="slds-assistive-text">{contact.FirstName} {contact.LastName}</span>
+            </span>
+
+            <div class="slds-media__body">
+                <p class="header"> {contact.FirstName} {contact.LastName} </p>
+                <p> {contact.Position} </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <template if:true={contact.Phone}>
+                <p> Phone number:</p>
+                <p class="connect"> {contact.Phone} </p>
+            </template>
+        </div>
+        <div class="flex-item">
+            <template if:true={contact.Email}>
+                <p> Email: </p>
+                <p class="connect"> {contact.Email} </p>
+            </template>
+        </div>
+    </div>
+</template>
