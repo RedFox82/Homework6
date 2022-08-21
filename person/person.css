@@ -1,0 +1,33 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    margin: 5px;
+    padding: 5px;
+    gap: 20px;
+    width: 100%;
+}
+
+.header {
+    font-size: medium;
+    color: dodgerblue;
+}
+
+.connect {
+    color: dodgerblue;
+}
+
+.flex-item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+.item {
+    width: 100%;
+    margin-left: 15px;
+}

@@ -1,0 +1,41 @@
+<template>
+    <div class="container">
+        <div class="flex-item" title="Click for show/hide detail" onclick={contactClick}>
+            <div class="item">
+                <div class="slds-media__body">
+                    <p class="header"> {contact.Name} </p>
+                </div>
+            </div>
+            <div class="item">
+                <template if:true={contact.Title}>
+                    <p>Title: {contact.Title} </p>
+                </template>
+                <template if:false= {contact.Title}>
+                    <p> Title: No data</p>
+                </template>
+            </div>
+        </div>
+        <div class="flex-item" if:true={showDetail}>
+            <div class="item">
+                <template if:true={contact.Phone}>
+                    <p> Phone number:</p>
+                    <p class="connect"> {contact.Phone} </p>
+                </template>
+                <template if:false= {contact.Phone}>
+                    <p> Phone number:</p>
+                    <p class="connect"> No data </p>
+                </template>
+            </div>
+            <div class="item">
+                <template if:true={contact.Email}>
+                    <p> Email: </p>
+                    <p class="connect"> {contact.Email} </p>
+                </template>
+                <template if:false= {contact.Email}>
+                    <p> Email: </p>
+                    <p class="connect"> No data </p>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

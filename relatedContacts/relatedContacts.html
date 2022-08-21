@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <h1>Related Contacts</h1>
+        <div class="container">
+            <div class="flex-item" if:false={showForm}>
+                <lightning-button id="LastName" variant="neutral" label="Add Contact" onclick={addContact}></lightning-button>
+            </div>
+            <div class="flex-item2" if:true={showForm}>
+                <div class="item">
+                    <lightning-input label="" placeholder="Last Name"  onchange={handleNameInput}></lightning-input>
+                </div>
+                <div class="item">
+                    <lightning-button variant="neutral" label="Save Contact" onclick={createContact}></lightning-button>
+                </div>
+                <div class="item">
+                    <lightning-button variant="neutral" label="Cancel" onclick={addContact}></lightning-button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-around_medium">
+            <template if:true={contacts.data}>
+                <template for:each={contacts.data} for:item="contact">
+                    <c-person key={contact.Id}
+                              contact={contact}>
+                    </c-person>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
+

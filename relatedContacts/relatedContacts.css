@@ -1,0 +1,46 @@
+
+.app {
+    background-color: #fafaf9;
+    height: 100vh;
+    overflow: scroll;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.flex-item {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%;
+}
+
+
+.flex-item2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: whitesmoke;
+    border: 1px solid gray;
+}
+
+lightning-input {
+    color: steelblue;
+    font-size: medium;
+    width: 260px;
+    min-width: 130px;
+}
