@@ -1,0 +1,14 @@
+<template>
+    <div class="container">
+        <div>
+            <p><b>Created date: </b> <lightning-formatted-date-time value={diary.CreatedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                                              minute="2-digit" hour12={ampm}></lightning-formatted-date-time></p>
+        </div>
+        <div class="flex-item">
+            <p><b>Note: </b>{diary.Note__c} </p>
+        </div>
+        <div>
+            <lightning-button variant="brand" label="Delete" onclick={delContact}></lightning-button>
+        </div>
+    </div>
+</template>
