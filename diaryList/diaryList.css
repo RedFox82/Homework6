@@ -1,0 +1,29 @@
+h1 {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+}
+
+.container {
+    background-color: whitesmoke;
+    border: 1px solid gray;
+    margin: 25px;
+    padding: 10px;
+}
+
+.flex-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 25px;
+    gap: 10px;
+    width: 100%;
+}
+
+.flex-item2 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 5px;
+    width: 100%;
+}
+
