@@ -14,7 +14,7 @@ private class MorningCaseCreatorSchedulerTest {
 
         System.assertEquals(MorningCaseCreatorScheduler.cronExp, ct.CronExpression);
         System.assertEquals(0, ct.TimesTriggered);
-        System.assertEquals(MorningCaseCreatorScheduler.dt_fire + ' 19:00:00', String.valueOf(ct.NextFireTime));
+        System.assertEquals(MorningCaseCreatorScheduler.dt_fire + ' 07:00:00', String.valueOf(ct.NextFireTime));
         Test.stopTest();
 
         String sbj = 'Morning Case - ' + System.Date.today().format();
