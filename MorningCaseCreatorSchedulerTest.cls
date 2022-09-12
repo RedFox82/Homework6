@@ -1,24 +1,47 @@
-@IsTest
-private class MorningCaseCreatorSchedulerTest {
+public with sharing class MorningCaseCreatorScheduler implements Schedulable {
 
-    @IsTest
-    static void testExecuteMorningCaseCreator() {
-        Test.startTest();
-        Database.executeBatch(new AccountProcessor());
-        String jobId = System.schedule('Morning Case', MorningCaseCreatorScheduler.cronExp,
-                                        new MorningCaseCreatorScheduler());
+    public static Integer crHours = 7;
+    public static Integer crMins = 0;
+    public static Integer crSecs = 0;
+    public static String cronExp = crSecs + ' ' + crMins + ' ' + crHours + ' 1/1 * ? *';
+
+    public void execute(SchedulableContext schedulableContext) {
 
         CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime
                           FROM CronTrigger
-                          WHERE id = :jobId];
+                          WHERE Id = :schedulableContext.getTriggerId()];
 
-        System.assertEquals(MorningCaseCreatorScheduler.cronExp, ct.CronExpression);
-        System.assertEquals(0, ct.TimesTriggered);
-        System.assertEquals(MorningCaseCreatorScheduler.dt_fire + ' 07:00:00', String.valueOf(ct.NextFireTime));
-        Test.stopTest();
+        System.assertEquals(cronExp, ct.CronExpression);
 
-        String sbj = 'Morning Case - ' + System.Date.today().format();
-        System.assertEquals(1, [SELECT Id FROM Case WHERE Subject = :sbj].size());
+        Datetime now = Datetime.now();
+
+        String dt_fire = '';
+        if ((now.hour() < crHours) ||
+                (now.hour() == crHours && (now.minute() < crMins ||
+                        (now.minute() == crMins && now.second() < crSecs)))) {
+            dt_fire = now.format('yyyy-MM-dd');
+        } else {
+            dt_fire = (now + 1).format('yyyy-MM-dd');
+        }
+
+        String tm_fire = '';
+        if (crHours < 10) {
+            tm_fire = tm_fire + '0' + String.valueOf(crHours) + ':';
+        } else {
+            tm_fire = tm_fire + String.valueOf(crHours) + ':';
+        }
+        if (crMins < 10) {
+            tm_fire = tm_fire + '0' + String.valueOf(crMins) + ':';
+        } else {
+            tm_fire = tm_fire + String.valueOf(crMins) + ':';
+        }
+        if (crSecs < 10) {
+            tm_fire = tm_fire + '0' + String.valueOf(crSecs);
+        } else {
+            tm_fire = tm_fire + String.valueOf(crSecs);
+        }
+
+        System.assertEquals(dt_fire + ' ' + tm_fire, String.valueOf(ct.NextFireTime));
+        insert (new Case(Subject = 'Morning Case - ' + System.Date.today().format(), Origin = 'Web'));
     }
-
 }
