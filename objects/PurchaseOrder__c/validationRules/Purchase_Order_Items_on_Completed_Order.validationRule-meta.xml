@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase_Order_Items_on_Completed_Order</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(ISPICKVAL(Status__c, &quot;Completed&quot;), Number_of_Line_Items__c &lt; PRIORVALUE(Number_of_Line_Items__c) )</errorConditionFormula>
+    <errorMessage>Cannot delete purchase order item for completed orders.</errorMessage>
+</ValidationRule>

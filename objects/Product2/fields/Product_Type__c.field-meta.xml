@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Product Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Family</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Calculator watch</fullName>
+                <default>false</default>
+                <label>Calculator watch</label>
+            </value>
+            <value>
+                <fullName>Camera phones</fullName>
+                <default>false</default>
+                <label>Camera phones</label>
+            </value>
+            <value>
+                <fullName>Digital camcorder</fullName>
+                <default>false</default>
+                <label>Digital camcorder</label>
+            </value>
+            <value>
+                <fullName>Digital media player</fullName>
+                <default>false</default>
+                <label>Digital media player</label>
+            </value>
+            <value>
+                <fullName>Digital still camera</fullName>
+                <default>false</default>
+                <label>Digital still camera</label>
+            </value>
+            <value>
+                <fullName>Digital video camera</fullName>
+                <default>false</default>
+                <label>Digital video camera</label>
+            </value>
+            <value>
+                <fullName>Enterprise digital assistant</fullName>
+                <default>false</default>
+                <label>Enterprise digital assistant</label>
+            </value>
+            <value>
+                <fullName>Feature phones</fullName>
+                <default>false</default>
+                <label>Feature phones</label>
+            </value>
+            <value>
+                <fullName>Front-facing camera</fullName>
+                <default>false</default>
+                <label>Front-facing camera</label>
+            </value>
+            <value>
+                <fullName>Graphing calculator</fullName>
+                <default>false</default>
+                <label>Graphing calculator</label>
+            </value>
+            <value>
+                <fullName>Handheld game console</fullName>
+                <default>false</default>
+                <label>Handheld game console</label>
+            </value>
+            <value>
+                <fullName>Handheld PC</fullName>
+                <default>false</default>
+                <label>Handheld PC</label>
+            </value>
+            <value>
+                <fullName>Head-mounted display</fullName>
+                <default>false</default>
+                <label>Head-mounted display</label>
+            </value>
+            <value>
+                <fullName>Laptop</fullName>
+                <default>false</default>
+                <label>Laptop</label>
+            </value>
+            <value>
+                <fullName>Mobile Internet device</fullName>
+                <default>false</default>
+                <label>Mobile Internet device</label>
+            </value>
+            <value>
+                <fullName>Netbook</fullName>
+                <default>false</default>
+                <label>Netbook</label>
+            </value>
+            <value>
+                <fullName>Pagers</fullName>
+                <default>false</default>
+                <label>Pagers</label>
+            </value>
+            <value>
+                <fullName>Personal digital assistant</fullName>
+                <default>false</default>
+                <label>Personal digital assistant</label>
+            </value>
+            <value>
+                <fullName>Personal navigation device</fullName>
+                <default>false</default>
+                <label>Personal navigation device</label>
+            </value>
+            <value>
+                <fullName>Phablets</fullName>
+                <default>false</default>
+                <label>Phablets</label>
+            </value>
+            <value>
+                <fullName>Pocket calculator</fullName>
+                <default>false</default>
+                <label>Pocket calculator</label>
+            </value>
+            <value>
+                <fullName>Portable media player</fullName>
+                <default>false</default>
+                <label>Portable media player</label>
+            </value>
+            <value>
+                <fullName>Smart cards</fullName>
+                <default>false</default>
+                <label>Smart cards</label>
+            </value>
+            <value>
+                <fullName>Smartphones</fullName>
+                <default>false</default>
+                <label>Smartphones</label>
+            </value>
+            <value>
+                <fullName>Smartwatch</fullName>
+                <default>false</default>
+                <label>Smartwatch</label>
+            </value>
+            <value>
+                <fullName>Tablet computer</fullName>
+                <default>false</default>
+                <label>Tablet computer</label>
+            </value>
+            <value>
+                <fullName>Ultra-mobile PC</fullName>
+                <default>false</default>
+                <label>Ultra-mobile PC</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Digital media player</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Enterprise digital assistant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Graphing calculator</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Handheld game console</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Handheld PC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Laptop</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Mobile Internet device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Netbook</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Personal digital assistant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Pocket calculator</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Portable media player</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Tablet computer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile computers</controllingFieldValue>
+            <valueName>Ultra-mobile PC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile phones</controllingFieldValue>
+            <valueName>Camera phones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile phones</controllingFieldValue>
+            <valueName>Feature phones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile phones</controllingFieldValue>
+            <valueName>Phablets</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mobile phones</controllingFieldValue>
+            <valueName>Smartphones</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable computers</controllingFieldValue>
+            <valueName>Calculator watch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable computers</controllingFieldValue>
+            <valueName>Head-mounted display</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wearable computers</controllingFieldValue>
+            <valueName>Smartwatch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital cameras</controllingFieldValue>
+            <valueName>Digital camcorder</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital cameras</controllingFieldValue>
+            <valueName>Digital still camera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital cameras</controllingFieldValue>
+            <valueName>Digital video camera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Digital cameras</controllingFieldValue>
+            <valueName>Front-facing camera</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pagers</controllingFieldValue>
+            <valueName>Pagers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Personal navigation device</controllingFieldValue>
+            <valueName>Personal navigation device</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Smart cards</controllingFieldValue>
+            <valueName>Smart cards</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

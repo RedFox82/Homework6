@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Date_Must_Be_a_Future_Date</fullName>
+    <active>true</active>
+    <errorConditionFormula>CloseDate &lt; TODAY()</errorConditionFormula>
+    <errorDisplayField>CloseDate</errorDisplayField>
+    <errorMessage>Close Date cannot be a day in the past.</errorMessage>
+</ValidationRule>
