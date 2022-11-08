@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_stock_quantity</fullName>
+    <active>true</active>
+    <errorConditionFormula>Stock__c  &lt; 0</errorConditionFormula>
+    <errorDisplayField>IsActive</errorDisplayField>
+    <errorMessage>Quantity of stock&apos;s product can&apos;t be less then 0.</errorMessage>
+</ValidationRule>

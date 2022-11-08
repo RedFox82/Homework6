@@ -1,0 +1,17 @@
+<template>
+    <div class="container" if:true={lines}>
+        <template for:each={lines} for:item="line">
+            <div class="flex-item" key={line.Id}>
+                <div class='item'>
+                    <lightning-input label='Product:' value={line.Name} disabled="true"></lightning-input>
+                </div>
+                <div class='item'>
+                    <lightning-input label='Quantity:' value={line.Quantity} disabled="true"></lightning-input>
+                </div>
+                <div>
+                    <lightning-button variant="brand" value={line.key} type="button" label="Delete" onclick={delItem}></lightning-button>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

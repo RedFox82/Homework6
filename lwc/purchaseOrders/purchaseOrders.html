@@ -1,0 +1,47 @@
+<template>
+    <lightning-card >
+        <h1>Create Purchase Order and Purchase Order Line Items</h1>
+        <div>
+            <div class="container">
+                <div>
+                    <lightning-input label="New Order Name:" onchange={handleNameInput}></lightning-input>
+                </div>
+            </div>
+            <div class="container">
+                <div class="flex-item">
+                    <div class='item'>
+                        <lightning-combobox class="inp1"
+                                            label="Product:"
+                                            value={value}
+                                            placeholder="-Select-"
+                                            options={products}
+                                            onchange={selectedCombo}>
+                        </lightning-combobox>
+                    </div>
+                    <div class='item'>
+                        <lightning-input type="number" min="1" label='Quantity:' class="inp2" onchange={handleQuantity}></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-button variant="brand" label="Add Line Item" onclick={addItem}></lightning-button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-p-around_medium">
+                  <c-lines-purchase lines={lines}
+                        ondelete={handleDelete}>
+                  </c-lines-purchase>
+            </div>
+
+            <div class="flex-item2">
+                <div>
+                    <lightning-button variant="neutral" type="reset" label="Cancel" onclick={formClose}></lightning-button>
+                </div>
+                <div>
+                    <lightning-button variant="brand" type="submit" label="Create" onclick={createOrder}></lightning-button>
+                </div>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

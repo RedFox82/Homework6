@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Purchase Order Line</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Purchase Order Lines</value>
+    </caseValues>
+    <layouts>
+        <layout>Purchase Order Line Item Layout</layout>
+        <sections>
+            <label></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>PO_Items_For_Completed_Orders</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage></errorMessage>
+        <name>Validate_Unit_Price</name>
+    </validationRules>
+</CustomObjectTranslation>
